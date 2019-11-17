@@ -1,0 +1,28 @@
+default:
+  image: node:13.1-alpine
+  cache:
+    policy: pull
+    paths:
+      - node_modules/
+      - .yarn
+
+stages:
+  - setup
+  - test
+
+setup_install_deps:
+  stage: setup
+  script:
+    - yarn install
+  cache:
+    policy: pull-push
+    paths:
+      - node_modules/
+      - .yarn
+
+test_lint:
+  stage: test
+  dependencies:
+    - setup_install_deps
+  script:
+    - yarn lint:ci
