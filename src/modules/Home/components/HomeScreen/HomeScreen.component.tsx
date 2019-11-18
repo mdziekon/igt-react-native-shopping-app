@@ -11,6 +11,7 @@ import {
   Icon,
 } from 'native-base';
 import { NavigationInjectedProps } from 'react-navigation';
+import { Footer } from '@mdziekon/igt-shopping/common/modules/Footer/components/Footer';
 
 type InjectedProps = NavigationInjectedProps;
 type HomeScreenComponentProps = InjectedProps;
@@ -50,6 +51,8 @@ export const HomeScreenComponent: React.FC<HomeScreenComponentProps> = (
           <Text>About</Text>
         </Button>
       </Content>
+
+      <Footer />
     </Container>
   );
 };

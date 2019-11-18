@@ -14,6 +14,7 @@ import {
 } from 'native-base';
 import { NavigationInjectedProps } from 'react-navigation';
 import { Products } from '@mdziekon/igt-shopping/common/models/products.models';
+import { Footer } from '@mdziekon/igt-shopping/common/modules/Footer/components/Footer';
 
 type ProductCategoriesScreenComponentOwnProps = {
   categories: Products.Category[];
@@ -59,6 +60,8 @@ export const ProductCategoriesScreenComponent: React.FC<ProductCategoriesScreenC
           })}
         </List>
       </Content>
+
+      <Footer />
     </Container>
   );
 };
