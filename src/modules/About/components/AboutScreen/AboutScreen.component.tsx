@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Body, Content, Text, Card, CardItem } from 'native-base';
-import { NavigationStackProp } from 'react-navigation-stack';
+import { NavigationInjectedProps } from 'react-navigation';
 
-type InjectedProps = { navigation: NavigationStackProp };
+type InjectedProps = NavigationInjectedProps;
 type AboutScreenComponentProps = InjectedProps;
 
 export const AboutScreenComponent: React.FC<AboutScreenComponentProps> = () => {
