@@ -10,8 +10,14 @@ import {
   CardItem,
   Icon,
 } from 'native-base';
+import { NavigationStackProp } from 'react-navigation-stack';
 
-export const HomeScreenComponent: React.FC = () => {
+type InjectedProps = { navigation: NavigationStackProp };
+type HomeScreenComponentProps = InjectedProps;
+
+export const HomeScreenComponent: React.FC<HomeScreenComponentProps> = (
+  props,
+) => {
   return (
     <Container>
       <Content padder>
@@ -26,7 +32,14 @@ export const HomeScreenComponent: React.FC = () => {
           <Icon type="Ionicons" name="apps" />
           <Text>Open product categories</Text>
         </Button>
-        <Button iconLeft block primary bordered style={styles.ctaButton}>
+        <Button
+          iconLeft
+          block
+          primary
+          bordered
+          style={styles.ctaButton}
+          onPress={() => props.navigation.navigate('About')}
+        >
           <Icon type="Ionicons" name="help-circle-outline" />
           <Text>About</Text>
         </Button>
