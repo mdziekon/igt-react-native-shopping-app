@@ -8,7 +8,7 @@
  * @format
  */
 
-import {AppRootComponent} from '@mdziekon/igt-shopping/bootstrap/AppRoot.component';
+import { AppRootComponent } from '@mdziekon/igt-shopping/bootstrap/AppRoot.component';
 
 const App = AppRootComponent;
 
