@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 
 import { HomeScreenComponent } from '@mdziekon/igt-shopping/modules/Home/components/HomeScreen/HomeScreen.component';
