@@ -28,7 +28,13 @@ export const HomeScreenComponent: React.FC<HomeScreenComponentProps> = (
             </Body>
           </CardItem>
         </Card>
-        <Button iconLeft block primary style={styles.ctaButton}>
+        <Button
+          iconLeft
+          block
+          primary
+          style={styles.ctaButton}
+          onPress={() => props.navigation.navigate('ProductCategories')}
+        >
           <Icon type="Ionicons" name="apps" />
           <Text>Open product categories</Text>
         </Button>
