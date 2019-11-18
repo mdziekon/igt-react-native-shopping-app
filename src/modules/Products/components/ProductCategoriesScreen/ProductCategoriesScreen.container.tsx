@@ -4,7 +4,7 @@ import {
   ProductCategoriesScreenComponent,
   ProductCategoriesScreenComponentProps,
 } from '@mdziekon/igt-shopping/modules/Products/components/ProductCategoriesScreen/ProductCategoriesScreen.component';
-import { getCategories } from '@mdziekon/igt-shopping/modules/Products/components/ProductCategoriesScreen/dataSource';
+import { getCategories } from '@mdziekon/igt-shopping/common/data/products/source.products.data';
 
 type MappedPropNames = 'categories';
 
