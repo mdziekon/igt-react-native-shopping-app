@@ -8,6 +8,9 @@ import {
   CardItem,
   List,
   ListItem,
+  Icon,
+  Right,
+  Left,
 } from 'native-base';
 import { NavigationInjectedProps } from 'react-navigation';
 import { Products } from '@mdziekon/igt-shopping/common/models/products.models';
@@ -37,8 +40,20 @@ export const ProductCategoriesScreenComponent: React.FC<ProductCategoriesScreenC
         <List>
           {props.categories.map((category) => {
             return (
-              <ListItem key={category.categoryId}>
-                <Text>{category.title}</Text>
+              <ListItem
+                key={category.categoryId}
+                onPress={() =>
+                  props.navigation.navigate('ProductsList', {
+                    categoryId: category.categoryId,
+                  })
+                }
+              >
+                <Left>
+                  <Text>{category.title}</Text>
+                </Left>
+                <Right>
+                  <Icon name="arrow-forward" />
+                </Right>
               </ListItem>
             );
           })}
