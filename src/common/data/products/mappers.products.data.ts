@@ -2,6 +2,7 @@ import {
   getCategories,
   getProducts,
 } from '@mdziekon/igt-shopping/common/data/products/source.products.data';
+import { Products } from '@mdziekon/igt-shopping/common/models/products.models';
 
 export const getProductsInCategory = (categoryId: string) => {
   const products = getProducts();
@@ -17,8 +18,12 @@ export const getCategoryDetails = (categoryId: string) => {
   );
 
   if (!matchingCategory) {
-    throw new Error('Invalid categoryId');
+    throw new Error('Category not found');
   }
 
   return matchingCategory;
+};
+
+export const getProductThumbnailUri = (_product: Products.Product) => {
+  return '';
 };
