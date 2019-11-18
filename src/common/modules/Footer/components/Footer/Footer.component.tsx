@@ -11,10 +11,14 @@ export type FooterComponentProps = FooterComponentOwnProps & InjectedProps;
 
 export const FooterComponent: React.FC<FooterComponentProps> = (props) => {
   const hasItemsInCart = props.cartItems.length > 0;
+  const totalCartItems = props.cartItems.reduce(
+    (accumulator, cartItem) => accumulator + cartItem.quantity,
+    0,
+  );
 
   const badgeNode = !hasItemsInCart ? null : (
     <Badge>
-      <Text>{props.cartItems.length}</Text>
+      <Text>{totalCartItems}</Text>
     </Badge>
   );
 
