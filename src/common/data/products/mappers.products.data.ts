@@ -24,6 +24,20 @@ export const getCategoryDetails = (categoryId: string) => {
   return matchingCategory;
 };
 
+export const getProductDetails = (productId: string) => {
+  const products = getProducts();
+
+  const matchingProduct = products.find(
+    (product) => product.productId === productId,
+  );
+
+  if (!matchingProduct) {
+    throw new Error('Product not found');
+  }
+
+  return matchingProduct;
+};
+
 export const getProductThumbnailUri = (_product: Products.Product) => {
   return '';
 };
