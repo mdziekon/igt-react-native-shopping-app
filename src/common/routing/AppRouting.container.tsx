@@ -5,7 +5,11 @@ import { HomeScreen } from '@mdziekon/igt-shopping/modules/Home/components/HomeS
 import { AboutScreen } from '@mdziekon/igt-shopping/modules/About/components/AboutScreen';
 import { ProductCategoriesScreen } from '@mdziekon/igt-shopping/modules/Products/components/ProductCategoriesScreen';
 import { ProductsListScreen } from '@mdziekon/igt-shopping/modules/Products/components/ProductsListScreen';
-import { getCategoryDetails } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
+import {
+  getCategoryDetails,
+  getProductDetails,
+} from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
+import { ProductDetailsScreen } from '@mdziekon/igt-shopping/modules/Products/components/ProductDetailsScreen';
 
 const AppNavigator = createStackNavigator(
   {
@@ -29,6 +33,17 @@ const AppNavigator = createStackNavigator(
 
         return {
           title: `Products (${category.title})`,
+        };
+      },
+    },
+    ProductDetails: {
+      getScreen: () => ProductDetailsScreen,
+      navigationOptions: ({ navigation }) => {
+        const productId = navigation.getParam('productId');
+        const product = getProductDetails(productId);
+
+        return {
+          title: `Product: ${product.title}`,
         };
       },
     },

@@ -45,7 +45,15 @@ export const ProductsListScreenComponent: React.FC<ProductsListScreenComponentPr
             const productThumbnailUri = getProductThumbnailUri(product);
 
             return (
-              <ListItem thumbnail key={product.productId}>
+              <ListItem
+                thumbnail
+                key={product.productId}
+                onPress={() =>
+                  props.navigation.navigate('ProductDetails', {
+                    productId: product.productId,
+                  })
+                }
+              >
                 <Left>
                   <Thumbnail square source={{ uri: productThumbnailUri }} />
                 </Left>
