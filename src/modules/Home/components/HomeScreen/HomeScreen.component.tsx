@@ -10,9 +10,9 @@ import {
   CardItem,
   Icon,
 } from 'native-base';
-import { NavigationStackProp } from 'react-navigation-stack';
+import { NavigationInjectedProps } from 'react-navigation';
 
-type InjectedProps = { navigation: NavigationStackProp };
+type InjectedProps = NavigationInjectedProps;
 type HomeScreenComponentProps = InjectedProps;
 
 export const HomeScreenComponent: React.FC<HomeScreenComponentProps> = (
