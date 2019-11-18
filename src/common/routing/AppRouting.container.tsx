@@ -1,26 +1,26 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { HomeScreenComponent } from '@mdziekon/igt-shopping/modules/Home/components/HomeScreen/HomeScreen.component';
-import { AboutScreenComponent } from '@mdziekon/igt-shopping/modules/About/components/AboutScreen/AboutScreen.component';
-import { ProductCategoriesScreenComponent } from '@mdziekon/igt-shopping/modules/Products/components/ProductCategoriesScreen/ProductCategoriesScreen.component';
+import { HomeScreen } from '@mdziekon/igt-shopping/modules/Home/components/HomeScreen';
+import { AboutScreen } from '@mdziekon/igt-shopping/modules/About/components/AboutScreen';
+import { ProductCategoriesScreen } from '@mdziekon/igt-shopping/modules/Products/components/ProductCategoriesScreen';
 
 const AppNavigator = createStackNavigator(
   {
     Home: {
-      getScreen: () => HomeScreenComponent,
+      getScreen: () => HomeScreen,
       navigationOptions: {
         title: 'Home',
       },
     },
     ProductCategories: {
-      getScreen: () => ProductCategoriesScreenComponent,
+      getScreen: () => ProductCategoriesScreen,
       navigationOptions: {
         title: 'Product categories',
       },
     },
     About: {
-      getScreen: () => AboutScreenComponent,
+      getScreen: () => AboutScreen,
       navigationOptions: {
         title: 'About',
       },
