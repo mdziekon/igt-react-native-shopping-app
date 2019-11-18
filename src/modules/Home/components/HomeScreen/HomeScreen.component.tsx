@@ -21,7 +21,7 @@ export const HomeScreenComponent: React.FC<HomeScreenComponentProps> = (
   return (
     <Container>
       <Content padder>
-        <Card>
+        <Card transparent>
           <CardItem>
             <Body>
               <Text>Welcome!</Text>
