@@ -1,21 +1,48 @@
 import React from 'react';
-import { Container, Body, Content, Text, Card, CardItem } from 'native-base';
+import {
+  Container,
+  Body,
+  Content,
+  Text,
+  Card,
+  CardItem,
+  List,
+  ListItem,
+} from 'native-base';
 import { NavigationInjectedProps } from 'react-navigation';
+import { Products } from '@mdziekon/igt-shopping/common/models/products.models';
 
+type ProductCategoriesScreenComponentOwnProps = {
+  categories: Products.Category[];
+};
 type InjectedProps = NavigationInjectedProps;
-type ProductCategoriesScreenComponentProps = InjectedProps;
 
-export const ProductCategoriesScreenComponent: React.FC<ProductCategoriesScreenComponentProps> = () => {
+export type ProductCategoriesScreenComponentProps = ProductCategoriesScreenComponentOwnProps &
+  InjectedProps;
+
+export const ProductCategoriesScreenComponent: React.FC<ProductCategoriesScreenComponentProps> = (
+  props,
+) => {
   return (
     <Container>
       <Content padder>
-        <Card>
+        <Card transparent>
           <CardItem>
             <Body>
-              <Text>Welcome!</Text>
+              <Text>Select a category</Text>
             </Body>
           </CardItem>
         </Card>
+
+        <List>
+          {props.categories.map((category) => {
+            return (
+              <ListItem key={category.categoryId}>
+                <Text>{category.title}</Text>
+              </ListItem>
+            );
+          })}
+        </List>
       </Content>
     </Container>
   );
