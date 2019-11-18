@@ -2,9 +2,6 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import {
   Container,
-  Header,
-  Title,
-  Right,
   Button,
   Body,
   Content,
@@ -17,12 +14,6 @@ import {
 export const HomeScreenComponent: React.FC = () => {
   return (
     <Container>
-      <Header>
-        <Body>
-          <Title>Home</Title>
-        </Body>
-        <Right />
-      </Header>
       <Content padder>
         <Card>
           <CardItem>
