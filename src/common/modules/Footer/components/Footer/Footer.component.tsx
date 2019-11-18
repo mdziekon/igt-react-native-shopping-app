@@ -1,0 +1,32 @@
+import React from 'react';
+import { Text, Icon, Footer, FooterTab, Button, Badge } from 'native-base';
+import { Cart } from '@mdziekon/igt-shopping/common/modules/Cart/models/cart.models';
+
+type FooterComponentOwnProps = {
+  cartItems: Cart.Item[];
+};
+type InjectedProps = {};
+
+export type FooterComponentProps = FooterComponentOwnProps & InjectedProps;
+
+export const FooterComponent: React.FC<FooterComponentProps> = (props) => {
+  const hasItemsInCart = props.cartItems.length > 0;
+
+  const badgeNode = !hasItemsInCart ? null : (
+    <Badge>
+      <Text>{props.cartItems.length}</Text>
+    </Badge>
+  );
+
+  return (
+    <Footer>
+      <FooterTab>
+        <Button badge={hasItemsInCart} vertical>
+          {badgeNode}
+          <Icon type="Ionicons" name="cart" />
+          <Text>Cart</Text>
+        </Button>
+      </FooterTab>
+    </Footer>
+  );
+};
