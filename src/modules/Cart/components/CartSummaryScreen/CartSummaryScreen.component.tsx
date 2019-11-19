@@ -56,7 +56,6 @@ export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProp
 
         <List>
           {props.cartItems.map((cartItem) => {
-            console.log(cartItem);
             const { productId } = cartItem;
             const product = getProductDetails(productId);
             const category = getCategoryDetails(product.categoryId);
