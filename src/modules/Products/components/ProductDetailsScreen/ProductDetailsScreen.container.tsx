@@ -35,7 +35,7 @@ export const ProductDetailsScreenContainer: React.FC<ContainerProps> = (
   const category = getCategoryDetails(product.categoryId);
 
   const onAddToCartPressed = () =>
-    dispatch(cartActionCreators.addItem(productId));
+    dispatch(cartActionCreators.addItem({ productId }));
 
   return (
     <ProductDetailsScreenComponent
