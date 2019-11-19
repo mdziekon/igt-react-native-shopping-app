@@ -10,6 +10,7 @@ import {
   getProductDetails,
 } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
 import { ProductDetailsScreen } from '@mdziekon/igt-shopping/modules/Products/components/ProductDetailsScreen';
+import { CartSummaryScreen } from '@mdziekon/igt-shopping/modules/Cart/components/CartSummaryScreen';
 
 const AppNavigator = createStackNavigator(
   {
@@ -45,6 +46,12 @@ const AppNavigator = createStackNavigator(
         return {
           title: `Product: ${product.title}`,
         };
+      },
+    },
+    CartSummary: {
+      getScreen: () => CartSummaryScreen,
+      navigationOptions: {
+        title: 'Cart summary',
       },
     },
     About: {
