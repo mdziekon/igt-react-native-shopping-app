@@ -27,6 +27,8 @@ import { StyleSheet } from 'react-native';
 
 type CartSummaryScreenComponentOwnProps = {
   cartItems: Cart.Item[];
+
+  onClearCartBtnPressed: () => void;
 };
 type InjectedProps = NavigationInjectedProps;
 
@@ -101,7 +103,7 @@ export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProp
               <Text />
             </Body>
             <Right>
-              <Button bordered warning>
+              <Button bordered warning onPress={props.onClearCartBtnPressed}>
                 <Text>Clear cart</Text>
               </Button>
             </Right>
@@ -114,6 +116,7 @@ export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProp
           <Button
             vertical
             onPress={() => {
+              // TODO: this behaviour should come from the container
               // TODO: replace with actual order generation
               const replaceAction = StackActions.replace({
                 routeName: 'CartOrderReceipt',
