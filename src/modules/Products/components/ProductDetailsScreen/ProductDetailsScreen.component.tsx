@@ -12,10 +12,12 @@ import {
 import { NavigationInjectedProps } from 'react-navigation';
 import { Products } from '@mdziekon/igt-shopping/common/models/products.models';
 import { StyleSheet } from 'react-native';
+import { Footer } from '@mdziekon/igt-shopping/common/modules/Footer/components/Footer';
 
 type ProductDetailsScreenComponentOwnProps = {
   category: Products.Category;
   product: Products.Product;
+  onAddToCartPressed: () => void;
 };
 type InjectedProps = NavigationInjectedProps;
 
@@ -45,14 +47,14 @@ export const ProductDetailsScreenComponent: React.FC<ProductDetailsScreenCompone
           primary
           bordered
           style={styles.ctaButton}
-          onPress={() =>
-            console.log('Added to cart', { productId: props.product.productId })
-          }
+          onPress={props.onAddToCartPressed}
         >
           <Icon type="Ionicons" name="add" />
           <Text>Add to Cart (${props.product.price})</Text>
         </Button>
       </Content>
+
+      <Footer navigation={props.navigation} />
     </Container>
   );
 };
