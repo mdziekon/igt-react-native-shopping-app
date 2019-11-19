@@ -45,6 +45,7 @@
     "prettier": "^1.19.1",
     "react-test-renderer": "16.9.0",
     "redux-logger": "^3.0.6",
+    "surge": "^0.21.3",
     "typescript": "^3.7.2"
   },
   "jest": {
