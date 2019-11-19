@@ -20,6 +20,7 @@ import { NavigationInjectedProps } from 'react-navigation';
 import {
   getProductThumbnailUri,
   getProductDetails,
+  getCategoryDetails,
 } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
 import { Cart } from '@mdziekon/igt-shopping/common/modules/Cart/models/cart.models';
 import { StyleSheet } from 'react-native';
@@ -58,6 +59,7 @@ export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProp
             console.log(cartItem);
             const { productId } = cartItem;
             const product = getProductDetails(productId);
+            const category = getCategoryDetails(product.categoryId);
             const productThumbnailUri = getProductThumbnailUri(product);
 
             const subtotal = Number(product.price) * cartItem.quantity;
@@ -69,6 +71,9 @@ export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProp
                 </Left>
                 <Body>
                   <Text>{product.title}</Text>
+                  <Text note numberOfLines={1} style={styles.cartItemCategory}>
+                    {category.title}
+                  </Text>
                   <Text note numberOfLines={1}>
                     Quantity: {cartItem.quantity}
                   </Text>
@@ -121,6 +126,10 @@ export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProp
 };
 
 const styles = StyleSheet.create({
+  cartItemCategory: {
+    fontSize: 10,
+    marginBottom: 6,
+  },
   totalListItem: {
     fontWeight: 'bold',
   },
