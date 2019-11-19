@@ -4,6 +4,14 @@ _Description TBD_
 
 ## Getting started
 
+### Configuration
+
+- Create `.env` file in the root directory
+  - Use `.env.example` as an example with all required fields
+  - For variable descriptions go to [Development guidelines > Env variables](#env-variables)
+
+### Scripts
+
 ```bash
 // Install dependencies
 yarn install
@@ -43,3 +51,8 @@ _Note: these instructions were created with Gitlab & Gitlab CI in mind. Your mil
 - By default, Gitlab CI script deploys to:
   - `https://review-{some_branch_slug}-{$SURGE_SUBDOMAIN}.surge.sh` when run on a development branch. Check out the pipeline result to find out exact address for your review.
   - `https://staging-{$SURGE_SUBDOMAIN}.surge.sh` when run on the `master` branch.
+
+### Env variables
+
+- `IGT_SHOPPING_ASSETS_BASEPATH`  
+  Base path to the dynamic assets (eg. images).

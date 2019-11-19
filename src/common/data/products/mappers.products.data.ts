@@ -1,3 +1,6 @@
+// @ts-ignore
+import { IGT_SHOPPING_ASSETS_BASEPATH } from 'react-native-dotenv';
+
 import {
   getCategories,
   getProducts,
@@ -39,5 +42,11 @@ export const getProductDetails = (productId: string) => {
 };
 
 export const getProductThumbnailUri = (_product: Products.Product) => {
-  return '';
+  const basePath = IGT_SHOPPING_ASSETS_BASEPATH;
+
+  if (!basePath) {
+    throw new Error('dotenv: IGT_SHOPPING_ASSETS_BASEPATH is empty!');
+  }
+
+  return `${basePath}/img/products/wrist_watch.jpg`;
 };

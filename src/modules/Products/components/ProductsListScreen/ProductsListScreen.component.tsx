@@ -56,7 +56,11 @@ export const ProductsListScreenComponent: React.FC<ProductsListScreenComponentPr
                 }
               >
                 <Left>
-                  <Thumbnail square source={{ uri: productThumbnailUri }} />
+                  <Thumbnail
+                    square
+                    style={{ width: 48, height: 48 }}
+                    source={{ uri: productThumbnailUri }}
+                  />
                 </Left>
                 <Body>
                   <Text>{product.title}</Text>
