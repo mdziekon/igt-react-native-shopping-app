@@ -16,7 +16,7 @@ import {
   FooterTab,
   Button,
 } from 'native-base';
-import { NavigationInjectedProps } from 'react-navigation';
+import { NavigationInjectedProps, StackActions } from 'react-navigation';
 import {
   getProductThumbnailUri,
   getProductDetails,
@@ -113,7 +113,17 @@ export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProp
         <FooterTab>
           <Button
             vertical
-            onPress={() => props.navigation.navigate('CartSummary')}
+            onPress={() => {
+              // TODO: replace with actual order generation
+              const replaceAction = StackActions.replace({
+                routeName: 'CartOrderReceipt',
+                params: {
+                  orderId: 'abc123xyz',
+                },
+              });
+
+              props.navigation.dispatch(replaceAction);
+            }}
           >
             <Icon type="Ionicons" name="card" />
             <Text>Confirm & Pay</Text>

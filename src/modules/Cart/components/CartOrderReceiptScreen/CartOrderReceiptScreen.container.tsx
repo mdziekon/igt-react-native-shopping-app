@@ -17,6 +17,7 @@ type ContainerProps = OwnProps &
 export const CartOrderReceiptScreenContainer: React.FC<ContainerProps> = (
   props,
 ) => {
+  // TODO: replace with actual order data fetching
   // const orderId: string = props.navigation.getParam('orderId');
 
   const order: Order.Order = {
