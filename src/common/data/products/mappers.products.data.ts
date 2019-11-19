@@ -41,12 +41,12 @@ export const getProductDetails = (productId: string) => {
   return matchingProduct;
 };
 
-export const getProductThumbnailUri = (_product: Products.Product) => {
+export const getProductThumbnailUri = (product: Products.Product) => {
   const basePath = IGT_SHOPPING_ASSETS_BASEPATH;
 
   if (!basePath) {
     throw new Error('dotenv: IGT_SHOPPING_ASSETS_BASEPATH is empty!');
   }
 
-  return `${basePath}/img/products/wrist_watch.jpg`;
+  return `${basePath}/img/products/${product.image}`;
 };

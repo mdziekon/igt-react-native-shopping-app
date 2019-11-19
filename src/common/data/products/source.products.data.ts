@@ -13,7 +13,7 @@ export const getProducts = (): Products.Product[] => [
     categoryId: '1',
     title: 'Wrist watch',
     price: '30.00',
-    image: 'watch.png',
+    image: 'wrist_watch.jpg',
   },
   {
     productId: '3',
