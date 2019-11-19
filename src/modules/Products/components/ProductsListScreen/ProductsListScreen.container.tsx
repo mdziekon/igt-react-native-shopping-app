@@ -20,7 +20,7 @@ type ContainerProps = OwnProps &
 export const ProductsListScreenContainer: React.FC<ContainerProps> = (
   props,
 ) => {
-  const categoryId = props.navigation.getParam('categoryId');
+  const categoryId: string = props.navigation.getParam('categoryId');
 
   const category = getCategoryDetails(categoryId);
   const products = getProductsInCategory(categoryId);

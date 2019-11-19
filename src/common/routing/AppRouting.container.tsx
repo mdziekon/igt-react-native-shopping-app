@@ -28,7 +28,7 @@ const AppNavigator = createStackNavigator(
     ProductsList: {
       getScreen: () => ProductsListScreen,
       navigationOptions: ({ navigation }) => {
-        const categoryId = navigation.getParam('categoryId');
+        const categoryId: string = navigation.getParam('categoryId');
         const category = getCategoryDetails(categoryId);
 
         return {
@@ -39,7 +39,7 @@ const AppNavigator = createStackNavigator(
     ProductDetails: {
       getScreen: () => ProductDetailsScreen,
       navigationOptions: ({ navigation }) => {
-        const productId = navigation.getParam('productId');
+        const productId: string = navigation.getParam('productId');
         const product = getProductDetails(productId);
 
         return {

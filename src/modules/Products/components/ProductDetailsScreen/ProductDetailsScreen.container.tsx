@@ -29,7 +29,7 @@ export const ProductDetailsScreenContainer: React.FC<ContainerProps> = (
 ) => {
   const dispatch = useDispatch();
 
-  const productId = props.navigation.getParam('productId');
+  const productId: string = props.navigation.getParam('productId');
 
   const product = getProductDetails(productId);
   const category = getCategoryDetails(product.categoryId);
