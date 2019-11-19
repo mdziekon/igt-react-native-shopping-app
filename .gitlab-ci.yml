@@ -39,3 +39,13 @@ deploy_assets_surge_review:
     - branches
   except:
     - master
+
+deploy_assets_surge_staging:
+  stage: deploy
+  environment:
+    name: staging
+    url: https://staging-$SURGE_SUBDOMAIN.surge.sh
+  script:
+    - yarn surge assets/surge https://staging-$SURGE_SUBDOMAIN.surge.sh
+  only:
+    - master
