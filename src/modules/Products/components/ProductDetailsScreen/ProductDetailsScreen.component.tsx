@@ -54,7 +54,7 @@ export const ProductDetailsScreenComponent: React.FC<ProductDetailsScreenCompone
         </Button>
       </Content>
 
-      <Footer />
+      <Footer navigation={props.navigation} />
     </Container>
   );
 };
