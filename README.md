@@ -28,3 +28,18 @@ yarn ios
   import { ExampleComponent } from '@mdziekon/igt-shopping/modules/example/components/Example.component';
   ```
 
+### Surge
+
+_Note: these instructions were created with Gitlab & Gitlab CI in mind. Your mileage may vary._
+
+- Get a new `surge.sh` token:  
+  `yarn surge token`
+- Store your login (email) & token in CI / CD secret variables:
+  - `GitLab > [Your project] > Settings > CI / CD > Variables`
+  - Create `SURGE_LOGIN` variable with your login (email)
+  - Create `SURGE_TOKEN` variable with your token (recommendation: set as masked)
+  - Create `SURGE_SUBDOMAIN` variable with your custom `surge.sh` subdomain (eg. `my-testing-env`, the protocol and `.surge.sh` domain will be added by the deployment script)
+
+- By default, Gitlab CI script deploys to:
+  - `https://review-{some_branch_slug}-{$SURGE_SUBDOMAIN}.surge.sh` when run on a development branch. Check out the pipeline result to find out exact address for your review.
+  - `https://staging-{$SURGE_SUBDOMAIN}.surge.sh` when run on the `master` branch.
