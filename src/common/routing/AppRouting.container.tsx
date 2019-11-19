@@ -11,6 +11,7 @@ import {
 } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
 import { ProductDetailsScreen } from '@mdziekon/igt-shopping/modules/Products/components/ProductDetailsScreen';
 import { CartSummaryScreen } from '@mdziekon/igt-shopping/modules/Cart/components/CartSummaryScreen';
+import { CartOrderReceiptScreen } from '@mdziekon/igt-shopping/modules/Cart/components/CartOrderReceiptScreen';
 
 const AppNavigator = createStackNavigator(
   {
@@ -52,6 +53,12 @@ const AppNavigator = createStackNavigator(
       getScreen: () => CartSummaryScreen,
       navigationOptions: {
         title: 'Cart summary',
+      },
+    },
+    CartOrderReceipt: {
+      getScreen: () => CartOrderReceiptScreen,
+      navigationOptions: {
+        title: "Order's receipt",
       },
     },
     About: {

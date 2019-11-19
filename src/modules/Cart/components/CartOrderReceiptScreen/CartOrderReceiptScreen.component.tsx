@@ -11,36 +11,29 @@ import {
   Left,
   Thumbnail,
   Right,
-  Icon,
-  Footer,
-  FooterTab,
-  Button,
 } from 'native-base';
-import { NavigationInjectedProps, StackActions } from 'react-navigation';
+import { NavigationInjectedProps } from 'react-navigation';
 import {
   getProductThumbnailUri,
   getProductDetails,
   getCategoryDetails,
 } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
-import { Cart } from '@mdziekon/igt-shopping/common/modules/Cart/models/cart.models';
 import { StyleSheet } from 'react-native';
+import { Order } from '@mdziekon/igt-shopping/common/models/order.models';
 
-type CartSummaryScreenComponentOwnProps = {
-  cartItems: Cart.Item[];
-
-  onClearCartBtnPressed: () => void;
+type CartOrderReceiptScreenComponentOwnProps = {
+  order: Order.Order;
 };
 type InjectedProps = NavigationInjectedProps;
 
-export type CartSummaryScreenComponentProps = CartSummaryScreenComponentOwnProps &
+export type CartOrderReceiptScreenComponentProps = CartOrderReceiptScreenComponentOwnProps &
   InjectedProps;
 
-export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProps> = (
+export const CartOrderReceiptScreenComponent: React.FC<CartOrderReceiptScreenComponentProps> = (
   props,
 ) => {
-  const total = props.cartItems.reduce((accumulator, cartItem) => {
-    const productDetails = getProductDetails(cartItem.productId);
-    const subtotal = Number(productDetails.price) * cartItem.quantity;
+  const total = props.order.items.reduce((accumulator, orderItem) => {
+    const subtotal = Number(orderItem.orderPrice) * orderItem.quantity;
 
     return accumulator + subtotal;
   }, 0);
@@ -51,19 +44,19 @@ export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProp
         <Card transparent>
           <CardItem>
             <Body>
-              <Text>Review your Cart's content</Text>
+              <Text>Your Order #{props.order.orderId} is complete!</Text>
             </Body>
           </CardItem>
         </Card>
 
         <List>
-          {props.cartItems.map((cartItem) => {
-            const { productId } = cartItem;
+          {props.order.items.map((orderItem) => {
+            const { productId } = orderItem;
             const product = getProductDetails(productId);
             const category = getCategoryDetails(product.categoryId);
             const productThumbnailUri = getProductThumbnailUri(product);
 
-            const subtotal = Number(product.price) * cartItem.quantity;
+            const subtotal = Number(orderItem.orderPrice) * orderItem.quantity;
 
             return (
               <ListItem thumbnail key={productId}>
@@ -76,7 +69,7 @@ export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProp
                     {category.title}
                   </Text>
                   <Text note numberOfLines={1}>
-                    Quantity: {cartItem.quantity}
+                    Quantity: {orderItem.quantity}
                   </Text>
                 </Body>
                 <Right>
@@ -98,41 +91,8 @@ export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProp
               </Text>
             </Right>
           </ListItem>
-          <ListItem thumbnail noBorder key={'item-clear-cart'}>
-            <Body>
-              <Text />
-            </Body>
-            <Right>
-              <Button bordered warning onPress={props.onClearCartBtnPressed}>
-                <Text>Clear cart</Text>
-              </Button>
-            </Right>
-          </ListItem>
         </List>
       </Content>
-
-      <Footer>
-        <FooterTab>
-          <Button
-            vertical
-            onPress={() => {
-              // TODO: this behaviour should come from the container
-              // TODO: replace with actual order generation
-              const replaceAction = StackActions.replace({
-                routeName: 'CartOrderReceipt',
-                params: {
-                  orderId: 'abc123xyz',
-                },
-              });
-
-              props.navigation.dispatch(replaceAction);
-            }}
-          >
-            <Icon type="Ionicons" name="card" />
-            <Text>Confirm & Pay</Text>
-          </Button>
-        </FooterTab>
-      </Footer>
     </Container>
   );
 };
