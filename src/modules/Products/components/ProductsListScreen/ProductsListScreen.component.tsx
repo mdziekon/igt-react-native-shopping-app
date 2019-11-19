@@ -17,6 +17,7 @@ import { NavigationInjectedProps } from 'react-navigation';
 import { Products } from '@mdziekon/igt-shopping/common/models/products.models';
 import { getProductThumbnailUri } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
 import { Footer } from '@mdziekon/igt-shopping/common/modules/Footer/components/Footer';
+import { StyleSheet } from 'react-native';
 
 type ProductsListScreenComponentOwnProps = {
   category: Products.Category;
@@ -58,7 +59,7 @@ export const ProductsListScreenComponent: React.FC<ProductsListScreenComponentPr
                 <Left>
                   <Thumbnail
                     square
-                    style={{ width: 48, height: 48 }}
+                    style={styles.productThumbnail}
                     source={{ uri: productThumbnailUri }}
                   />
                 </Left>
@@ -81,3 +82,10 @@ export const ProductsListScreenComponent: React.FC<ProductsListScreenComponentPr
     </Container>
   );
 };
+
+const styles = StyleSheet.create({
+  productThumbnail: {
+    width: 48,
+    height: 48,
+  },
+});
