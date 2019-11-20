@@ -1,15 +1,15 @@
 import React from 'react';
 import { Text, Icon, Footer, FooterTab, Button, Badge } from 'native-base';
-import { NavigationInjectedProps } from 'react-navigation';
 
 import { Cart } from '@mdziekon/igt-shopping/common/modules/Cart/models/cart.models';
 
 type FooterComponentOwnProps = {
   cartItems: Cart.Item[];
-};
-type InjectedProps = NavigationInjectedProps;
 
-export type FooterComponentProps = FooterComponentOwnProps & InjectedProps;
+  onCartBtnPressed: () => void;
+};
+
+export type FooterComponentProps = FooterComponentOwnProps;
 
 export const FooterComponent: React.FC<FooterComponentProps> = (props) => {
   const hasItemsInCart = props.cartItems.length > 0;
@@ -31,7 +31,7 @@ export const FooterComponent: React.FC<FooterComponentProps> = (props) => {
           active={hasItemsInCart}
           badge={hasItemsInCart}
           vertical
-          onPress={() => props.navigation.navigate('CartSummary')}
+          onPress={props.onCartBtnPressed}
         >
           {badgeNode}
           <Icon type="Ionicons" name="cart" />

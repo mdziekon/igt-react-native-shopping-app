@@ -8,7 +8,7 @@ import {
 } from '@mdziekon/igt-shopping/common/modules/Footer/components/Footer/Footer.component';
 import { RootState } from '@mdziekon/igt-shopping/common/rootState/root.reducer';
 
-type MappedPropNames = 'cartItems' | 'navigation';
+type MappedPropNames = 'cartItems' | 'onCartBtnPressed';
 
 type MappedProps = Pick<FooterComponentProps, MappedPropNames>;
 type OwnProps = Omit<FooterComponentProps, keyof MappedProps>;
@@ -17,7 +17,13 @@ export const FooterContainer: React.FC<OwnProps> = (props) => {
   const navigation = useNavigation();
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
+  const onCartBtnPressed = () => navigation.navigate('CartSummary');
+
   return (
-    <FooterComponent cartItems={cartItems} navigation={navigation} {...props} />
+    <FooterComponent
+      cartItems={cartItems}
+      onCartBtnPressed={onCartBtnPressed}
+      {...props}
+    />
   );
 };
