@@ -11,9 +11,9 @@ import { RootState } from '@mdziekon/igt-shopping/common/rootState/root.reducer'
 type MappedPropNames = 'cartItems' | 'onCartBtnPressed';
 
 type MappedProps = Pick<FooterComponentProps, MappedPropNames>;
-type OwnProps = Omit<FooterComponentProps, keyof MappedProps>;
+type ContainerProps = Omit<FooterComponentProps, keyof MappedProps>;
 
-export const FooterContainer: React.FC<OwnProps> = (props) => {
+export const FooterContainer: React.FC<ContainerProps> = (props) => {
   const navigation = useNavigation();
   const cartItems = useSelector((state: RootState) => state.cart.items);
 

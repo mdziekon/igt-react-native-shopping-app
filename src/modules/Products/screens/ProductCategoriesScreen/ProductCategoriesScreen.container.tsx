@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigationInjectedProps } from 'react-navigation';
+import { useNavigation } from 'react-navigation-hooks';
 
 import {
   ProductCategoriesScreenComponent,
@@ -10,21 +10,24 @@ import { getCategories } from '@mdziekon/igt-shopping/common/data/products/sourc
 type MappedPropNames = 'categories' | 'onCategoriesListItemPressed';
 
 type MappedProps = Pick<ProductCategoriesScreenComponentProps, MappedPropNames>;
-type OwnProps = NavigationInjectedProps;
 
-type ContainerProps = OwnProps &
-  Omit<ProductCategoriesScreenComponentProps, keyof MappedProps>;
+type ContainerProps = Omit<
+  ProductCategoriesScreenComponentProps,
+  keyof MappedProps
+>;
 
 export const ProductCategoriesScreenContainer: React.FC<ContainerProps> = (
   props,
 ) => {
-  const categories = getCategories();
+  const navigation = useNavigation();
 
   const onCategoriesListItemPressed = (categoryId: string) => {
-    props.navigation.navigate('ProductsList', {
+    navigation.navigate('ProductsList', {
       categoryId,
     });
   };
+
+  const categories = getCategories();
 
   return (
     <ProductCategoriesScreenComponent

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigationInjectedProps } from 'react-navigation';
+import { useNavigation } from 'react-navigation-hooks';
 
 import {
   HomeScreenComponent,
@@ -9,18 +9,18 @@ import {
 type MappedPropNames = 'onProductCategoriesBtnPressed' | 'onAboutBtnPressed';
 
 type MappedProps = Pick<HomeScreenComponentProps, MappedPropNames>;
-type OwnProps = NavigationInjectedProps;
 
-type ContainerProps = OwnProps &
-  Omit<HomeScreenComponentProps, keyof MappedProps>;
+type ContainerProps = Omit<HomeScreenComponentProps, keyof MappedProps>;
 
 export const HomeScreenContainer: React.FC<ContainerProps> = (props) => {
+  const navigation = useNavigation();
+
   const onProductCategoriesBtnPressed = () => {
-    props.navigation.navigate('ProductCategories');
+    navigation.navigate('ProductCategories');
   };
 
   const onAboutBtnPressed = () => {
-    props.navigation.navigate('About');
+    navigation.navigate('About');
   };
 
   return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigation } from 'react-navigation-hooks';
 
 import {
   ProductDetailsScreenComponent,
@@ -10,7 +11,6 @@ import {
   getProductDetails,
 } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
 import { cartActionCreators } from '@mdziekon/igt-shopping/common/modules/Cart/actions/cart.actions';
-import { NavigationInjectedProps } from 'react-navigation';
 
 type MappedPropNames = 'category' | 'product';
 type DispatchPropNames = 'onAddToCartPressed';
@@ -20,17 +20,19 @@ type DispatchProps = Pick<
   ProductDetailsScreenComponentProps,
   DispatchPropNames
 >;
-type OwnProps = NavigationInjectedProps;
 
-type ContainerProps = OwnProps &
-  Omit<ProductDetailsScreenComponentProps, keyof MappedProps & DispatchProps>;
+type ContainerProps = Omit<
+  ProductDetailsScreenComponentProps,
+  keyof MappedProps & DispatchProps
+>;
 
 export const ProductDetailsScreenContainer: React.FC<ContainerProps> = (
   props,
 ) => {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const productId: string = props.navigation.getParam('productId');
+  const productId: string = navigation.getParam('productId');
 
   const product = getProductDetails(productId);
   const category = getCategoryDetails(product.categoryId);
