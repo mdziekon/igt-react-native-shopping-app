@@ -12,7 +12,6 @@ import {
   Thumbnail,
   Right,
 } from 'native-base';
-import { NavigationInjectedProps } from 'react-navigation';
 import {
   getProductThumbnailUri,
   getProductDetails,
@@ -24,10 +23,8 @@ import { Order } from '@mdziekon/igt-shopping/common/models/order.models';
 type CartOrderReceiptScreenComponentOwnProps = {
   order: Order.Order;
 };
-type InjectedProps = NavigationInjectedProps;
 
-export type CartOrderReceiptScreenComponentProps = CartOrderReceiptScreenComponentOwnProps &
-  InjectedProps;
+export type CartOrderReceiptScreenComponentProps = CartOrderReceiptScreenComponentOwnProps;
 
 export const CartOrderReceiptScreenComponent: React.FC<CartOrderReceiptScreenComponentProps> = (
   props,

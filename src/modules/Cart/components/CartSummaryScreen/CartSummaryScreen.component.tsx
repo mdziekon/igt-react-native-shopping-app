@@ -16,7 +16,6 @@ import {
   FooterTab,
   Button,
 } from 'native-base';
-import { NavigationInjectedProps, StackActions } from 'react-navigation';
 import {
   getProductThumbnailUri,
   getProductDetails,
@@ -29,11 +28,10 @@ type CartSummaryScreenComponentOwnProps = {
   cartItems: Cart.Item[];
 
   onClearCartBtnPressed: () => void;
+  onConfirmAndPayBtnPressed: () => void;
 };
-type InjectedProps = NavigationInjectedProps;
 
-export type CartSummaryScreenComponentProps = CartSummaryScreenComponentOwnProps &
-  InjectedProps;
+export type CartSummaryScreenComponentProps = CartSummaryScreenComponentOwnProps;
 
 export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProps> = (
   props,
@@ -117,22 +115,7 @@ export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProp
 
       <Footer>
         <FooterTab>
-          <Button
-            active
-            vertical
-            onPress={() => {
-              // TODO: this behaviour should come from the container
-              // TODO: replace with actual order generation
-              const replaceAction = StackActions.replace({
-                routeName: 'CartOrderReceipt',
-                params: {
-                  orderId: 'abc123xyz',
-                },
-              });
-
-              props.navigation.dispatch(replaceAction);
-            }}
-          >
+          <Button active vertical onPress={props.onConfirmAndPayBtnPressed}>
             <Icon type="Ionicons" name="card" />
             <Text>Confirm & Pay</Text>
           </Button>

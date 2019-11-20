@@ -12,17 +12,16 @@ import {
   Right,
   Left,
 } from 'native-base';
-import { NavigationInjectedProps } from 'react-navigation';
 import { Products } from '@mdziekon/igt-shopping/common/models/products.models';
 import { Footer } from '@mdziekon/igt-shopping/common/modules/Footer/components/Footer';
 
 type ProductCategoriesScreenComponentOwnProps = {
   categories: Products.Category[];
-};
-type InjectedProps = NavigationInjectedProps;
 
-export type ProductCategoriesScreenComponentProps = ProductCategoriesScreenComponentOwnProps &
-  InjectedProps;
+  onCategoriesListItemPressed: (categoryId: string) => void;
+};
+
+export type ProductCategoriesScreenComponentProps = ProductCategoriesScreenComponentOwnProps;
 
 export const ProductCategoriesScreenComponent: React.FC<ProductCategoriesScreenComponentProps> = (
   props,
@@ -44,9 +43,7 @@ export const ProductCategoriesScreenComponent: React.FC<ProductCategoriesScreenC
               <ListItem
                 key={category.categoryId}
                 onPress={() =>
-                  props.navigation.navigate('ProductsList', {
-                    categoryId: category.categoryId,
-                  })
+                  props.onCategoriesListItemPressed(category.categoryId)
                 }
               >
                 <Left>

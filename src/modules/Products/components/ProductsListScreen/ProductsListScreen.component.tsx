@@ -13,7 +13,6 @@ import {
   Right,
   Icon,
 } from 'native-base';
-import { NavigationInjectedProps } from 'react-navigation';
 import { Products } from '@mdziekon/igt-shopping/common/models/products.models';
 import { getProductThumbnailUri } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
 import { Footer } from '@mdziekon/igt-shopping/common/modules/Footer/components/Footer';
@@ -22,11 +21,11 @@ import { StyleSheet } from 'react-native';
 type ProductsListScreenComponentOwnProps = {
   category: Products.Category;
   products: Products.Product[];
-};
-type InjectedProps = NavigationInjectedProps;
 
-export type ProductsListScreenComponentProps = ProductsListScreenComponentOwnProps &
-  InjectedProps;
+  onProductsListItemPressed: (productId: string) => void;
+};
+
+export type ProductsListScreenComponentProps = ProductsListScreenComponentOwnProps;
 
 export const ProductsListScreenComponent: React.FC<ProductsListScreenComponentProps> = (
   props,
@@ -51,9 +50,7 @@ export const ProductsListScreenComponent: React.FC<ProductsListScreenComponentPr
                 thumbnail
                 key={product.productId}
                 onPress={() =>
-                  props.navigation.navigate('ProductDetails', {
-                    productId: product.productId,
-                  })
+                  props.onProductsListItemPressed(product.productId)
                 }
               >
                 <Left>

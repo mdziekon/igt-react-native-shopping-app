@@ -10,11 +10,12 @@ import {
   CardItem,
   Icon,
 } from 'native-base';
-import { NavigationInjectedProps } from 'react-navigation';
 import { Footer } from '@mdziekon/igt-shopping/common/modules/Footer/components/Footer';
 
-type InjectedProps = NavigationInjectedProps;
-type HomeScreenComponentProps = InjectedProps;
+export type HomeScreenComponentProps = {
+  onProductCategoriesBtnPressed: () => void;
+  onAboutBtnPressed: () => void;
+};
 
 export const HomeScreenComponent: React.FC<HomeScreenComponentProps> = (
   props,
@@ -34,7 +35,7 @@ export const HomeScreenComponent: React.FC<HomeScreenComponentProps> = (
           block
           primary
           style={styles.ctaButton}
-          onPress={() => props.navigation.navigate('ProductCategories')}
+          onPress={props.onProductCategoriesBtnPressed}
         >
           <Icon type="Ionicons" name="apps" />
           <Text>Open product categories</Text>
@@ -45,7 +46,7 @@ export const HomeScreenComponent: React.FC<HomeScreenComponentProps> = (
           primary
           bordered
           style={styles.ctaButton}
-          onPress={() => props.navigation.navigate('About')}
+          onPress={props.onAboutBtnPressed}
         >
           <Icon type="Ionicons" name="help-circle-outline" />
           <Text>About</Text>

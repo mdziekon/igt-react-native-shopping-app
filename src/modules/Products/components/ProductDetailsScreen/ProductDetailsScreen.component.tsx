@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Content, Text, Button, Icon } from 'native-base';
-import { NavigationInjectedProps } from 'react-navigation';
 import { Products } from '@mdziekon/igt-shopping/common/models/products.models';
 import { StyleSheet } from 'react-native';
 import { Footer } from '@mdziekon/igt-shopping/common/modules/Footer/components/Footer';
@@ -12,10 +11,8 @@ type ProductDetailsScreenComponentOwnProps = {
   product: Products.Product;
   onAddToCartPressed: () => void;
 };
-type InjectedProps = NavigationInjectedProps;
 
-export type ProductDetailsScreenComponentProps = ProductDetailsScreenComponentOwnProps &
-  InjectedProps;
+export type ProductDetailsScreenComponentProps = ProductDetailsScreenComponentOwnProps;
 
 export const ProductDetailsScreenComponent: React.FC<ProductDetailsScreenComponentProps> = (
   props,

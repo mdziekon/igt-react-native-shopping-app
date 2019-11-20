@@ -10,6 +10,7 @@ import {
   getProductDetails,
 } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
 import { cartActionCreators } from '@mdziekon/igt-shopping/common/modules/Cart/actions/cart.actions';
+import { NavigationInjectedProps } from 'react-navigation';
 
 type MappedPropNames = 'category' | 'product';
 type DispatchPropNames = 'onAddToCartPressed';
@@ -19,7 +20,7 @@ type DispatchProps = Pick<
   ProductDetailsScreenComponentProps,
   DispatchPropNames
 >;
-type OwnProps = {};
+type OwnProps = NavigationInjectedProps;
 
 type ContainerProps = OwnProps &
   Omit<ProductDetailsScreenComponentProps, keyof MappedProps & DispatchProps>;
