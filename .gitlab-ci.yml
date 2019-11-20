@@ -9,6 +9,7 @@ default:
 stages:
   - setup
   - test
+  - deploy
 
 setup_install_deps:
   stage: setup
@@ -26,3 +27,25 @@ test_lint:
     - setup_install_deps
   script:
     - yarn lint:ci
+
+deploy_assets_surge_review:
+  stage: deploy
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+    url: https://$CI_ENVIRONMENT_SLUG-$SURGE_SUBDOMAIN.surge.sh
+  script:
+    - yarn surge assets/surge https://$CI_ENVIRONMENT_SLUG-$SURGE_SUBDOMAIN.surge.sh
+  only:
+    - branches
+  except:
+    - master
+
+deploy_assets_surge_staging:
+  stage: deploy
+  environment:
+    name: staging
+    url: https://staging-$SURGE_SUBDOMAIN.surge.sh
+  script:
+    - yarn surge assets/surge https://staging-$SURGE_SUBDOMAIN.surge.sh
+  only:
+    - master

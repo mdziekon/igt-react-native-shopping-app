@@ -28,6 +28,7 @@ export const FooterComponent: React.FC<FooterComponentProps> = (props) => {
     <Footer>
       <FooterTab>
         <Button
+          active={hasItemsInCart}
           badge={hasItemsInCart}
           vertical
           onPress={() => props.navigation.navigate('CartSummary')}

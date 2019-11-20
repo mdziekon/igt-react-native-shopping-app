@@ -1,18 +1,11 @@
 import React from 'react';
-import {
-  Container,
-  Body,
-  Content,
-  Text,
-  Card,
-  CardItem,
-  Button,
-  Icon,
-} from 'native-base';
+import { Container, Content, Text, Button, Icon } from 'native-base';
 import { NavigationInjectedProps } from 'react-navigation';
 import { Products } from '@mdziekon/igt-shopping/common/models/products.models';
 import { StyleSheet } from 'react-native';
 import { Footer } from '@mdziekon/igt-shopping/common/modules/Footer/components/Footer';
+import { getProductThumbnailUri } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
+import { AutosizedRemoteThumbnail } from '@mdziekon/igt-shopping/common/components/AutosizedRemoteThumbnail/AutosizedRemoteThumbnail.component';
 
 type ProductDetailsScreenComponentOwnProps = {
   category: Products.Category;
@@ -27,18 +20,14 @@ export type ProductDetailsScreenComponentProps = ProductDetailsScreenComponentOw
 export const ProductDetailsScreenComponent: React.FC<ProductDetailsScreenComponentProps> = (
   props,
 ) => {
+  const productThumbnailUri = getProductThumbnailUri(props.product);
+
   return (
     <Container>
       <Content padder>
-        <Card transparent>
-          <CardItem>
-            <Body>
-              <Text>Product overview</Text>
-            </Body>
-          </CardItem>
-        </Card>
+        <AutosizedRemoteThumbnail source={{ uri: productThumbnailUri }} />
 
-        <Text>{props.product.title}</Text>
+        <Text style={styles.productTitle}>{props.product.title}</Text>
         <Text>Category: {props.category.title}</Text>
 
         <Button
@@ -60,7 +49,10 @@ export const ProductDetailsScreenComponent: React.FC<ProductDetailsScreenCompone
 };
 
 const styles = StyleSheet.create({
+  productTitle: {
+    fontWeight: 'bold',
+  },
   ctaButton: {
-    marginTop: 10,
+    marginTop: 50,
   },
 });

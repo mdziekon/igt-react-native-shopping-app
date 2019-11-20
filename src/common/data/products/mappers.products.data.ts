@@ -1,3 +1,6 @@
+// @ts-ignore
+import { IGT_SHOPPING_ASSETS_BASEPATH } from 'react-native-dotenv';
+
 import {
   getCategories,
   getProducts,
@@ -38,6 +41,12 @@ export const getProductDetails = (productId: string) => {
   return matchingProduct;
 };
 
-export const getProductThumbnailUri = (_product: Products.Product) => {
-  return '';
+export const getProductThumbnailUri = (product: Products.Product) => {
+  const basePath = IGT_SHOPPING_ASSETS_BASEPATH;
+
+  if (!basePath) {
+    throw new Error('dotenv: IGT_SHOPPING_ASSETS_BASEPATH is empty!');
+  }
+
+  return `${basePath}/img/products/${product.image}`;
 };
