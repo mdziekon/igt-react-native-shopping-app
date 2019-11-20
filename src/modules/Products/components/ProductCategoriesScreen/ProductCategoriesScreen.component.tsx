@@ -61,7 +61,7 @@ export const ProductCategoriesScreenComponent: React.FC<ProductCategoriesScreenC
         </List>
       </Content>
 
-      <Footer navigation={props.navigation} />
+      <Footer />
     </Container>
   );
 };

@@ -52,7 +52,7 @@ export const HomeScreenComponent: React.FC<HomeScreenComponentProps> = (
         </Button>
       </Content>
 
-      <Footer navigation={props.navigation} />
+      <Footer />
     </Container>
   );
 };

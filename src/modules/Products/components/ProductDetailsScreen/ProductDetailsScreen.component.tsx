@@ -43,7 +43,7 @@ export const ProductDetailsScreenComponent: React.FC<ProductDetailsScreenCompone
         </Button>
       </Content>
 
-      <Footer navigation={props.navigation} />
+      <Footer />
     </Container>
   );
 };
