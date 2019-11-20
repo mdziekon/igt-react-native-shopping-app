@@ -5,6 +5,7 @@ import { StyleSheet } from 'react-native';
 import { Footer } from '@mdziekon/igt-shopping/common/modules/Footer/components/Footer';
 import { getProductThumbnailUri } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
 import { AutosizedRemoteThumbnail } from '@mdziekon/igt-shopping/common/components/AutosizedRemoteThumbnail/AutosizedRemoteThumbnail.component';
+import { displayPrice } from '@mdziekon/igt-shopping/common/utils/prices.utils';
 
 type ProductDetailsScreenComponentOwnProps = {
   category: Products.Category;
@@ -36,7 +37,7 @@ export const ProductDetailsScreenComponent: React.FC<ProductDetailsScreenCompone
           onPress={props.onAddToCartPressed}
         >
           <Icon type="Ionicons" name="add" />
-          <Text>Add to Cart (${props.product.price})</Text>
+          <Text>Add to Cart ({displayPrice(props.product.price)})</Text>
         </Button>
       </Content>
 

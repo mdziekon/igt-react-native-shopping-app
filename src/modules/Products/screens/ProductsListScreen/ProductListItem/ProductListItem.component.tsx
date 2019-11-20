@@ -12,6 +12,7 @@ import {
   Icon,
 } from 'native-base';
 import { StyleSheet } from 'react-native';
+import { displayPrice } from '@mdziekon/igt-shopping/common/utils/prices.utils';
 
 interface ProductListItemProps {
   product: Products.Product;
@@ -39,7 +40,7 @@ export const ProductListItem: React.FC<ProductListItemProps> = (props) => {
       <Body>
         <Text>{product.title}</Text>
         <Text note numberOfLines={1}>
-          Price: ${product.price}
+          Price: {displayPrice(product.price)}
         </Text>
       </Body>
       <Right>

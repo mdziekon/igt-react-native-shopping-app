@@ -88,6 +88,7 @@ module.exports = {
     setTimeout: false,
     window: false,
     XMLHttpRequest: false,
+    Intl: true,
   },
 
   rules: {
