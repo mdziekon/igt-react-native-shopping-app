@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import {
   ProductDetailsScreenComponent,
   ProductDetailsScreenComponentProps,
-} from '@mdziekon/igt-shopping/modules/Products/components/ProductDetailsScreen/ProductDetailsScreen.component';
+} from '@mdziekon/igt-shopping/modules/Products/screens/ProductDetailsScreen/ProductDetailsScreen.component';
 import {
   getCategoryDetails,
   getProductDetails,

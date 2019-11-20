@@ -3,7 +3,7 @@ import React from 'react';
 import {
   CartOrderReceiptScreenComponent,
   CartOrderReceiptScreenComponentProps,
-} from '@mdziekon/igt-shopping/modules/Cart/components/CartOrderReceiptScreen/CartOrderReceiptScreen.component';
+} from '@mdziekon/igt-shopping/modules/Cart/screens/CartOrderReceiptScreen/CartOrderReceiptScreen.component';
 import { Order } from '@mdziekon/igt-shopping/common/models/order.models';
 
 type MappedPropNames = 'order';

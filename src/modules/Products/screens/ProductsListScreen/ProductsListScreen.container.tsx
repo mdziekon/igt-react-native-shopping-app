@@ -4,7 +4,7 @@ import { NavigationInjectedProps } from 'react-navigation';
 import {
   ProductsListScreenComponent,
   ProductsListScreenComponentProps,
-} from '@mdziekon/igt-shopping/modules/Products/components/ProductsListScreen/ProductsListScreen.component';
+} from '@mdziekon/igt-shopping/modules/Products/screens/ProductsListScreen/ProductsListScreen.component';
 import {
   getCategoryDetails,
   getProductsInCategory,

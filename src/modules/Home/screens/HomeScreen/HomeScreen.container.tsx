@@ -4,7 +4,7 @@ import { NavigationInjectedProps } from 'react-navigation';
 import {
   HomeScreenComponent,
   HomeScreenComponentProps,
-} from '@mdziekon/igt-shopping/modules/Home/components/HomeScreen/HomeScreen.component';
+} from '@mdziekon/igt-shopping/modules/Home/screens/HomeScreen/HomeScreen.component';
 
 type MappedPropNames = 'onProductCategoriesBtnPressed' | 'onAboutBtnPressed';
 

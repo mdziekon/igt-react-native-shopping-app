@@ -4,7 +4,7 @@ import { NavigationInjectedProps } from 'react-navigation';
 import {
   ProductCategoriesScreenComponent,
   ProductCategoriesScreenComponentProps,
-} from '@mdziekon/igt-shopping/modules/Products/components/ProductCategoriesScreen/ProductCategoriesScreen.component';
+} from '@mdziekon/igt-shopping/modules/Products/screens/ProductCategoriesScreen/ProductCategoriesScreen.component';
 import { getCategories } from '@mdziekon/igt-shopping/common/data/products/source.products.data';
 
 type MappedPropNames = 'categories' | 'onCategoriesListItemPressed';

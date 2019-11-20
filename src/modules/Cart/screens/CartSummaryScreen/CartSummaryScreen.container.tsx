@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   CartSummaryScreenComponent,
   CartSummaryScreenComponentProps,
-} from '@mdziekon/igt-shopping/modules/Cart/components/CartSummaryScreen/CartSummaryScreen.component';
+} from '@mdziekon/igt-shopping/modules/Cart/screens/CartSummaryScreen/CartSummaryScreen.component';
 import { RootState } from '@mdziekon/igt-shopping/common/rootState/root.reducer';
 import { cartActionCreators } from '@mdziekon/igt-shopping/common/modules/Cart/actions/cart.actions';
 import { NavigationInjectedProps, StackActions } from 'react-navigation';
