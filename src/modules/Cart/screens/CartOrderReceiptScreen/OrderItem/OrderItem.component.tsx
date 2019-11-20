@@ -7,6 +7,10 @@ import {
 } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
 import { ListItem, Left, Thumbnail, Text, Body, Right } from 'native-base';
 import { StyleSheet } from 'react-native';
+import {
+  priceStringToNumber,
+  displayPrice,
+} from '@mdziekon/igt-shopping/common/utils/prices.utils';
 
 interface OrderItemProps {
   orderItem: Order.OrderItem;
@@ -20,7 +24,8 @@ export const OrderItem: React.FC<OrderItemProps> = (props) => {
   const category = getCategoryDetails(product.categoryId);
   const productThumbnailUri = getProductThumbnailUri(product);
 
-  const subtotal = Number(orderItem.orderPrice) * orderItem.quantity;
+  const subtotal =
+    priceStringToNumber(orderItem.orderPrice) * orderItem.quantity;
 
   return (
     <ListItem thumbnail>
@@ -42,7 +47,7 @@ export const OrderItem: React.FC<OrderItemProps> = (props) => {
       </Body>
       <Right>
         <Text note numberOfLines={1}>
-          Subtotal: ${subtotal}
+          Subtotal: {displayPrice(subtotal)}
         </Text>
       </Right>
     </ListItem>

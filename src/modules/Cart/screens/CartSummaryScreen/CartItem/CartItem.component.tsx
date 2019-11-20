@@ -7,6 +7,10 @@ import {
 import { ListItem, Left, Thumbnail, Text, Body, Right } from 'native-base';
 import { StyleSheet } from 'react-native';
 import { Cart } from '@mdziekon/igt-shopping/common/modules/Cart/models/cart.models';
+import {
+  priceStringToNumber,
+  displayPrice,
+} from '@mdziekon/igt-shopping/common/utils/prices.utils';
 
 interface CartItemProps {
   cartItem: Cart.Item;
@@ -20,7 +24,7 @@ export const CartItem: React.FC<CartItemProps> = (props) => {
   const category = getCategoryDetails(product.categoryId);
   const productThumbnailUri = getProductThumbnailUri(product);
 
-  const subtotal = Number(product.price) * cartItem.quantity;
+  const subtotal = priceStringToNumber(product.price) * cartItem.quantity;
 
   return (
     <ListItem thumbnail key={productId}>
@@ -42,7 +46,7 @@ export const CartItem: React.FC<CartItemProps> = (props) => {
       </Body>
       <Right>
         <Text note numberOfLines={1}>
-          Subtotal: ${subtotal}
+          Subtotal: {displayPrice(subtotal)}
         </Text>
       </Right>
     </ListItem>
