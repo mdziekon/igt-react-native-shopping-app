@@ -68,7 +68,11 @@ export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProp
             return (
               <ListItem thumbnail key={productId}>
                 <Left>
-                  <Thumbnail square source={{ uri: productThumbnailUri }} />
+                  <Thumbnail
+                    square
+                    style={styles.cartItemThumbnail}
+                    source={{ uri: productThumbnailUri }}
+                  />
                 </Left>
                 <Body>
                   <Text>{product.title}</Text>
@@ -141,6 +145,10 @@ const styles = StyleSheet.create({
   cartItemCategory: {
     fontSize: 10,
     marginBottom: 6,
+  },
+  cartItemThumbnail: {
+    width: 48,
+    height: 48,
   },
   totalListItem: {
     fontWeight: 'bold',
