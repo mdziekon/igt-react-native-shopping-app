@@ -6,31 +6,8 @@ import {
   CartActionTypes,
   cartActionCreators,
 } from '@mdziekon/igt-shopping/common/modules/Cart/actions/cart.actions';
-import { Order } from '@mdziekon/igt-shopping/common/models/order.models';
-import { RootState } from '@mdziekon/igt-shopping/common/rootState/root.reducer';
-import { Cart } from '@mdziekon/igt-shopping/common/modules/Cart/models/cart.models';
-import { getProductDetails } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
-
-const generateOrder = (params: { cartItems: Cart.Item[] }) => {
-  const order: Order.Order = {
-    orderId: String(Math.floor(Math.random() * 1000000)),
-    items: params.cartItems.map(
-      (cartItem): Order.OrderItem => {
-        const product = getProductDetails(cartItem.productId);
-
-        return {
-          productId: cartItem.productId,
-          quantity: cartItem.quantity,
-          orderPrice: product.price,
-        };
-      },
-    ),
-  };
-
-  return order;
-};
-
-const selectCartItems = (state: RootState) => state.cart.items;
+import { selectCartItems } from '@mdziekon/igt-shopping/common/modules/Cart/utils/selectors.utils';
+import { generateOrder } from '@mdziekon/igt-shopping/common/modules/Cart/utils/helpers.utils';
 
 function* submitCart(action: CartAction) {
   if (action.type !== CartActionTypes.SubmitCart) {
