@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Body, Content, Text, Card, CardItem } from 'native-base';
+import { Container, Content, Text } from 'native-base';
 import { NavigationInjectedProps } from 'react-navigation';
 
 type InjectedProps = NavigationInjectedProps;
@@ -9,13 +9,7 @@ export const AboutScreenComponent: React.FC<AboutScreenComponentProps> = () => {
   return (
     <Container>
       <Content padder>
-        <Card>
-          <CardItem>
-            <Body>
-              <Text>Welcome!</Text>
-            </Body>
-          </CardItem>
-        </Card>
+        <Text>Author: Michał Dziekoński</Text>
       </Content>
     </Container>
   );
