@@ -118,6 +118,7 @@ export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProp
       <Footer>
         <FooterTab>
           <Button
+            active
             vertical
             onPress={() => {
               // TODO: this behaviour should come from the container
