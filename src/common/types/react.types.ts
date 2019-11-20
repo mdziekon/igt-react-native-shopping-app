@@ -1,11 +1,11 @@
 import React from 'react';
 
-export type ExtractReactFCPropsType<T> = T extends React.FC<infer PropsType>
-  ? PropsType
-  : never;
-
 export type ExtractReactComponentPropsType<T> = T extends React.Component<
-  infer PropsType
+  infer PropsType1
 >
-  ? PropsType
+  ? PropsType1
+  : T extends React.ComponentType<infer PropsType2>
+  ? PropsType2
+  : T extends React.FC<infer PropsType3>
+  ? PropsType3
   : never;

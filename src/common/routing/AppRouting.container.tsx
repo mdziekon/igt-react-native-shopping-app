@@ -1,17 +1,17 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { HomeScreen } from '@mdziekon/igt-shopping/modules/Home/components/HomeScreen';
-import { AboutScreen } from '@mdziekon/igt-shopping/modules/About/components/AboutScreen';
-import { ProductCategoriesScreen } from '@mdziekon/igt-shopping/modules/Products/components/ProductCategoriesScreen';
-import { ProductsListScreen } from '@mdziekon/igt-shopping/modules/Products/components/ProductsListScreen';
+import { HomeScreen } from '@mdziekon/igt-shopping/modules/Home/screens/HomeScreen';
+import { AboutScreen } from '@mdziekon/igt-shopping/modules/About/screens/AboutScreen';
+import { ProductCategoriesScreen } from '@mdziekon/igt-shopping/modules/Products/screens/ProductCategoriesScreen';
+import { ProductsListScreen } from '@mdziekon/igt-shopping/modules/Products/screens/ProductsListScreen';
 import {
   getCategoryDetails,
   getProductDetails,
 } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
-import { ProductDetailsScreen } from '@mdziekon/igt-shopping/modules/Products/components/ProductDetailsScreen';
-import { CartSummaryScreen } from '@mdziekon/igt-shopping/modules/Cart/components/CartSummaryScreen';
-import { CartOrderReceiptScreen } from '@mdziekon/igt-shopping/modules/Cart/components/CartOrderReceiptScreen';
+import { ProductDetailsScreen } from '@mdziekon/igt-shopping/modules/Products/screens/ProductDetailsScreen';
+import { CartSummaryScreen } from '@mdziekon/igt-shopping/modules/Cart/screens/CartSummaryScreen';
+import { CartOrderReceiptScreen } from '@mdziekon/igt-shopping/modules/Cart/screens/CartOrderReceiptScreen';
 
 const AppNavigator = createStackNavigator(
   {
