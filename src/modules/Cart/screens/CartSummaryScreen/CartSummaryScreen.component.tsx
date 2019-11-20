@@ -6,6 +6,7 @@ import { CartSummaryItem } from '@mdziekon/igt-shopping/modules/Cart/screens/Car
 import { CartActions } from '@mdziekon/igt-shopping/modules/Cart/screens/CartSummaryScreen/CartActions/CartActions.component';
 import { CartFooter } from '@mdziekon/igt-shopping/modules/Cart/screens/CartSummaryScreen/CartFooter/CartFooter.component';
 import { CartHeader } from '@mdziekon/igt-shopping/modules/Cart/screens/CartSummaryScreen/CartHeader/CartHeader.component';
+import { CartEmptyView } from '@mdziekon/igt-shopping/modules/Cart/screens/CartSummaryScreen/CartEmptyView/CartEmptyView.component';
 
 type CartSummaryScreenComponentOwnProps = {
   cartItems: Cart.Item[];
@@ -19,6 +20,10 @@ export type CartSummaryScreenComponentProps = CartSummaryScreenComponentOwnProps
 export const CartSummaryScreenComponent: React.FC<CartSummaryScreenComponentProps> = (
   props,
 ) => {
+  if (props.cartItems.length === 0) {
+    return <CartEmptyView />;
+  }
+
   return (
     <Container>
       <Content padder>
