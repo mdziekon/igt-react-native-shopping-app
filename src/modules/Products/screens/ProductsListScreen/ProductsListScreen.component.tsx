@@ -7,16 +7,10 @@ import {
   Card,
   CardItem,
   List,
-  ListItem,
-  Left,
-  Thumbnail,
-  Right,
-  Icon,
 } from 'native-base';
 import { Products } from '@mdziekon/igt-shopping/common/models/products.models';
-import { getProductThumbnailUri } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
 import { Footer } from '@mdziekon/igt-shopping/common/modules/Footer/components/Footer';
-import { StyleSheet } from 'react-native';
+import { ProductListItem } from '@mdziekon/igt-shopping/modules/Products/screens/ProductsListScreen/ProductListItem/ProductListItem.component';
 
 type ProductsListScreenComponentOwnProps = {
   category: Products.Category;
@@ -43,33 +37,12 @@ export const ProductsListScreenComponent: React.FC<ProductsListScreenComponentPr
 
         <List>
           {props.products.map((product) => {
-            const productThumbnailUri = getProductThumbnailUri(product);
-
             return (
-              <ListItem
-                thumbnail
+              <ProductListItem
                 key={product.productId}
-                onPress={() =>
-                  props.onProductsListItemPressed(product.productId)
-                }
-              >
-                <Left>
-                  <Thumbnail
-                    square
-                    style={styles.productThumbnail}
-                    source={{ uri: productThumbnailUri }}
-                  />
-                </Left>
-                <Body>
-                  <Text>{product.title}</Text>
-                  <Text note numberOfLines={1}>
-                    Price: ${product.price}
-                  </Text>
-                </Body>
-                <Right>
-                  <Icon name="arrow-forward" />
-                </Right>
-              </ListItem>
+                product={product}
+                onProductsListItemPressed={props.onProductsListItemPressed}
+              />
             );
           })}
         </List>
@@ -79,10 +52,3 @@ export const ProductsListScreenComponent: React.FC<ProductsListScreenComponentPr
     </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  productThumbnail: {
-    width: 48,
-    height: 48,
-  },
-});

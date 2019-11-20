@@ -7,13 +7,10 @@ import {
   Card,
   CardItem,
   List,
-  ListItem,
-  Icon,
-  Right,
-  Left,
 } from 'native-base';
 import { Products } from '@mdziekon/igt-shopping/common/models/products.models';
 import { Footer } from '@mdziekon/igt-shopping/common/modules/Footer/components/Footer';
+import { CategoryListItem } from '@mdziekon/igt-shopping/modules/Products/screens/ProductCategoriesScreen/CategoryListItem/CategoryListItem.component';
 
 type ProductCategoriesScreenComponentOwnProps = {
   categories: Products.Category[];
@@ -40,19 +37,11 @@ export const ProductCategoriesScreenComponent: React.FC<ProductCategoriesScreenC
         <List>
           {props.categories.map((category) => {
             return (
-              <ListItem
+              <CategoryListItem
                 key={category.categoryId}
-                onPress={() =>
-                  props.onCategoriesListItemPressed(category.categoryId)
-                }
-              >
-                <Left>
-                  <Text>{category.title}</Text>
-                </Left>
-                <Right>
-                  <Icon name="arrow-forward" />
-                </Right>
-              </ListItem>
+                category={category}
+                onCategoriesListItemPressed={props.onCategoriesListItemPressed}
+              />
             );
           })}
         </List>
