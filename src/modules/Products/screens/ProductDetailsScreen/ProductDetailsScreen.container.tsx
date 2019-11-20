@@ -12,18 +12,13 @@ import {
 } from '@mdziekon/igt-shopping/common/data/products/mappers.products.data';
 import { cartActionCreators } from '@mdziekon/igt-shopping/common/modules/Cart/actions/cart.actions';
 
-type MappedPropNames = 'category' | 'product';
-type DispatchPropNames = 'onAddToCartPressed';
+type MappedPropNames = 'category' | 'product' | 'onAddToCartPressed';
 
 type MappedProps = Pick<ProductDetailsScreenComponentProps, MappedPropNames>;
-type DispatchProps = Pick<
-  ProductDetailsScreenComponentProps,
-  DispatchPropNames
->;
 
 type ContainerProps = Omit<
   ProductDetailsScreenComponentProps,
-  keyof MappedProps & DispatchProps
+  keyof MappedProps
 >;
 
 export const ProductDetailsScreenContainer: React.FC<ContainerProps> = (
